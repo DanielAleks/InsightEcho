@@ -1,47 +1,34 @@
 <template>
   <div class="ml-30" style="width: 78vw">
     <div class="ml-10">
-      <div class="absolute right-10">
-        <input
-          class="p-2"
-          style="border-radius: 4px 0px 0px 4px"
-          type="text"
-          placeholder="Search Movie..."
-        />
-        <button class="btn bg-blue-500 rounded p-2 text-white">Sort By</button>
-      </div>
-      <!-- {{ posts }} -->
-
-      <div v-if="posts" class="grid grid-cols-6 bg-red w-2/3 mt-[-27rem]">
-        <div
-          class="grid grid-cols-4 gap-5 ml-40 text-slate-500"
-          v-for="item in posts.genres"
-        >
-          <div>
-            <button
-              class="bg-gray-900 hover:bg-blue-950 active:bg-blue-900 p-5 m-2 rounded"
-              @click="setMovieGenre({ item: item })"
-            >
-              {{ item.name }}
-              <!-- {{ item.id }} -->
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- movie_list -->
-      <div>
-        <div class="grid grid-cols-6 gap-5 ml-40 text-slate-500">
-          <div v-for="item in movie_list.tv_results">
-            <div class="bg-gray-900 hover:bg-blue-950 active:bg-blue-900 p-5 m-2 rounded">
-              {{ item }}
-              <!-- {{ item.overview }}
-        {{ item.poster_path }}
-        {{ item.release_date }}
-        {{ item.title }}
-        {{ item.id }} -->
-            </div>
-          </div>
+      <div v-if="movie_list">
+        <div class="gap-5 ml-40 text-slate-500">
+          <!-- <div
+            v-for="item in movie_list"
+            :key="item.id"
+            class="bg-gray-900 hover:bg-blue-950 active:bg-blue-900 p-5 m-2 rounded"
+          >
+            {{ item.adult }}
+          </div> -->
+          <!-- <div
+            v-for="item in movie_list"
+            :key="item.id"
+            class="bg-gray-900 hover:bg-blue-950 active:bg-blue-900 p-5 m-2 rounded"
+          > -->
+          <img :src="'http://image.tmdb.org/t/p/w500/' + movie_list.backdrop_path" />
+          <img :src="'http://image.tmdb.org/t/p/w500/' + movie_list.poster_path" />
+          <p>{{ movie_list.adult }}</p>
+          <p>{{ movie_list.movie_list }}</p>
+          <!-- <p>{{ movie_list.genres }} </p>
+          <p>{{ movie_list.overview }} </p> -->
+          <p>{{ movie_list.popularity }}</p>
+          <p>{{ movie_list.release_date }}</p>
+          <p>{{ movie_list.title }}</p>
+          <p>{{ movie_list.video }}</p>
+          <p>{{ movie_list.vote_average }}</p>
+          <p>{{ movie_list.vote_count }}</p>
+          <!-- </div> -->
         </div>
       </div>
 
@@ -115,33 +102,28 @@ export default defineComponent({
     //   getMovies();
     // });
 
-    const posts = ref([]);
     const movie_list = ref([]);
 
     onMounted(() => {
-      axios.get(get_genres).then((response) => {
-        posts.value = response.data;
-      });
+      // axios.get(get_genres).then((response) => {
+      //   posts.value = response.data;
+      // });
       axios.get(get_movie_list).then((response) => {
         movie_list.value = response.data;
       });
       setTimeout(() => {
-        console.log(posts, "posts");
         console.log(movie_list, "movie_list");
-        console.log(posts.value, "posts.value");
       }, 5000);
     });
 
-    const get_genres =
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=ef9dda51b2c7b29d237fab7aa1cf81e5&language=en-US            ";
-
+  
     const get_movie_list =
       "https://api.themoviedb.org/3/movie/550?api_key=ef9dda51b2c7b29d237fab7aa1cf81e5";
 
     const get_discover_movies =
       "https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
 
-    return { state, posts, setMovieGenre, movie_list };
+    return { state, setMovieGenre, movie_list };
   },
   mixins: [VueAxios],
 });

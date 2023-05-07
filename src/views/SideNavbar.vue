@@ -39,7 +39,6 @@
         />
         <p class="text-white text-lg mt-2">Sara</p>
         <p class="text-white text-lg mt-0 text-slate-500">Premium Member</p>
-        <p>{{ state.value }}</p>
       </div>
 
       <ul class="space-y-2 font-medium mt-20">
