@@ -1,9 +1,10 @@
 <template>
-  <div class="ml-30" style="width: 78vw">
+  <div style="margin-left: 10rem; width: 78vw; margin-top: 7rem">
     <div class="ml-10">
       <!-- movie_list -->
-      <div v-if="movie_list">
-        <div class="gap-5 ml-40 text-slate-500">
+      <!-- {{ movie_list && movie_list }} -->
+      <div v-if="movie_list" class="grid grid-cols-4 gap-5">
+        <div v-for="item in movie_list.results" class="text-slate-500 rounded relative">
           <!-- <div
             v-for="item in movie_list"
             :key="item.id"
@@ -16,18 +17,23 @@
             :key="item.id"
             class="bg-gray-900 hover:bg-blue-950 active:bg-blue-900 p-5 m-2 rounded"
           > -->
-          <img :src="'http://image.tmdb.org/t/p/w500/' + movie_list.backdrop_path" />
-          <img :src="'http://image.tmdb.org/t/p/w500/' + movie_list.poster_path" />
-          <p>{{ movie_list.adult }}</p>
-          <p>{{ movie_list.movie_list }}</p>
-          <!-- <p>{{ movie_list.genres }} </p>
-          <p>{{ movie_list.overview }} </p> -->
-          <p>{{ movie_list.popularity }}</p>
-          <p>{{ movie_list.release_date }}</p>
-          <p>{{ movie_list.title }}</p>
-          <p>{{ movie_list.video }}</p>
-          <p>{{ movie_list.vote_average }}</p>
-          <p>{{ movie_list.vote_count }}</p>
+          <!-- <img :src="'http://image.tmdb.org/t/p/w500/' + item.backdrop_path" /> -->
+          <img :src="'http://image.tmdb.org/t/p/w500/' + item.poster_path" />
+          <div
+            @click="setFavorite(item)"
+            class="absolute bottom-3 w-16 h-16 rounded-full right-3 flex justify-center items-center text-xl cursor-pointer favorite-bg"
+          >
+            <Heart class="w-8 h-8 text-white"/>
+          </div>
+          <!-- <p>{{ item.adult }}</p> -->
+          <!-- <p>{{ item.genres }} </p>
+          <p>{{ item.overview }} </p> -->
+          <!-- <p>{{ item.popularity }}</p>
+          <p>{{ item.release_date }}</p>
+          <p>{{ item.title }}</p>
+          <p>{{ item.video }}</p>
+          <p>{{ item.vote_average }}</p>
+          <p>{{ item.vote_count }}</p> -->
           <!-- </div> -->
         </div>
       </div>
@@ -52,12 +58,31 @@
   </div>
 </template>
 
+<style lang="css">
+.favorite-bg {
+  background: rgb(0, 0, 0, 0.6);
+}
+.favorite-bg:hover {
+  background: rgb(0, 0, 0, 0.4);
+}
+.favorite-bg:active {
+  background: #c63022ae
+}
+</style>
+
 <script>
-import { defineComponent, reactive, onMounted, ref } from "vue";
+import { defineComponent, reactive, onMounted, ref, inject } from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import { Heart } from "lucide-vue-next"
 
 export default defineComponent({
+  components: {
+    Heart,
+  },
+  props: {
+    setNotification: Function,
+  },
   setup() {
     const state = reactive({
       movieSearch: "",
@@ -68,6 +93,16 @@ export default defineComponent({
       isGenreChange: false,
       genre_name: "",
     });
+
+    // const setNotification = inject("setNotification");
+
+    function setFavorite(item) {
+      console.log(item, "setFavorite");
+      props.setNotification("Favorite Added");
+
+      // send database response to backend
+      // create a page for all favorite movies
+    }
 
     function setMovieGenre({ item: item }) {
       console.log(item, "item");
@@ -108,22 +143,25 @@ export default defineComponent({
       // axios.get(get_genres).then((response) => {
       //   posts.value = response.data;
       // });
-      axios.get(get_movie_list).then((response) => {
+      axios.get(get_movie_list_discover).then((response) => {
         movie_list.value = response.data;
       });
       setTimeout(() => {
         console.log(movie_list, "movie_list");
+        // console.log(get_movie_list_discover, "get_movie_list_discover");
       }, 5000);
     });
 
-  
+    const get_movie_list_discover =
+      "https://api.themoviedb.org/3/discover/movie?api_key=ef9dda51b2c7b29d237fab7aa1cf81e5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+
     const get_movie_list =
       "https://api.themoviedb.org/3/movie/550?api_key=ef9dda51b2c7b29d237fab7aa1cf81e5";
 
     const get_discover_movies =
       "https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
 
-    return { state, setMovieGenre, movie_list };
+    return { state, setMovieGenre, movie_list, setFavorite };
   },
   mixins: [VueAxios],
 });

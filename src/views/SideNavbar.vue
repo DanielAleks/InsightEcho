@@ -41,13 +41,17 @@
         <p class="text-white text-lg mt-0 text-slate-500">Premium Member</p>
       </div>
 
-      <ul class="space-y-2 font-medium mt-20">
+<div class="flex justify-center mt-7">
+<hr class="w-36 border-gray-800">
+</div>
+      <ul class="space-y-2 font-medium mt-7">
         <div v-for="item in routeLinks">
           <li>
             <a
               href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700"
             >
+              <component :is="item.icon" class="text-white w-5 h-5 ml-8" />
               <span class="ml-3 text-white">{{ item.name }}</span>
             </a>
           </li>
@@ -59,38 +63,28 @@
 
 <script>
 import { defineComponent, reactive } from "vue";
-
+import { LogOut, Clapperboard, Heart } from "lucide-vue-next";
 export default defineComponent({
   setup() {
     const state = reactive({
-      value: "daniell this is state",
+      value: "",
     });
 
     const routeLinks = [
       {
-        name: "New Movies",
+        name: "Top Movies",
         link: "/new-movies",
-        icon: "",
-      },
-      {
-        name: "Genre",
-        link: "/genre",
-        icon: "",
+        icon: Clapperboard,
       },
       {
         name: "Favorites",
         link: "/favorites",
-        icon: "",
-      },
-      {
-        name: "Downloaded",
-        link: "/downloaded",
-        icon: "",
+        icon: Heart,
       },
       {
         name: "Logout",
         link: "/login",
-        icon: "",
+        icon: LogOut,
       },
     ];
 
