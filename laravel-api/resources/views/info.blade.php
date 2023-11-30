@@ -30,39 +30,35 @@
 
 
                    
-                    <p style="margin-top: 2rem; font-size: 30px; font-weight: 700">Product Posts</p>
+                    <p style="margin-top: 2rem; font-size: 30px; font-weight: 700">Product Info</p>
 
                     <!-- {{-- <div @if (addTask === true) @endif> --}} -->
                 </div>
             </div>
 
             <div style="position: absolute; top: 5rem">
-            @foreach ($posts as $post)
+            @foreach ($info as $item)
             <div style=" margin-left: 10rem; background: black">
                 <p style="margin-top: 3rem; font-size: 20px; border-bottom: 1px solid white; width: 10rem;">Task:
-                    {{ $post->title }}</p>
-                <p>ID: {{ $post->id }}</p> 
-                <p>Setting: {{ $post->setting }}</p>
-                <p>Avg Video Length: {{ $post->avg_video_length }}</p>
-                <p>Hook: {{ $post->hook }}</p>
-                <p>Transitions: {{ $post->transitions }}</p>
-                <p>Lighting: {{ $post->lighting }}</p>
-                <p>Music: {{ $post->music }}</p>
+                    {{ $item->title }}</p>
+                <p>ID: {{ $item->id }}</p> 
+                <p>suppliers: {{ $item->suppliers }}</p>
+                <p>Selling Price: {{ $item->sellingPrice }}</p>
+                <p>Costs: {{ $item->costs }}</p>
+                <p>Links: {{ $item->links }}</p>
 
 
 <!-- CRUD is done, with all fields (should have option to add to the column) -->
 <!-- Other sections: ProductInfo, ProductResearch, routes: info/, research/ -->
-                <form method="POST" action="{{ url('/'.$post->id) }}">
+                <form method="POST" action="{{ url('/'.$item->id) }}">
               @method('PATCH')
               @csrf
-              <!-- <input type="hidden" name="title" value="{{ $post->title }}"> -->
-              <input name="title" placeholder="Title" class="form-control" value="{{ $post->title }}"/>
-              <input name="setting" placeholder="Setting" class="form-control" value="{{ $post->setting }}"/>
-              <input name="avg_video_length" type="number" placeholder="Average Video Length" class="form-control" value="{{ $post->avg_video_length }}"/>
-              <input name="hook" placeholder="Hook" class="form-control" value="{{ $post->hook }}"/>
-              <input name="transitions" placeholder="Transitions" class="form-control" value="{{ $post->transitions }}"/>
-              <input name="lighting" placeholder="Lighting" class="form-control" value="{{ $post->lighting }}"/>
-              <input name="music" placeholder="music" class="form-control" value="{{ $post->music }}"/>
+              <!-- <input type="hidden" name="title" value="{{ $item->title }}"> -->
+              <input name="title" placeholder="Title" class="form-control" value="{{ $item->title }}"/>
+              <input name="suppliers" placeholder="suppliers" class="form-control" value="{{ $item->suppliers }}"/>
+              <input name="sellingPrice" type="number" placeholder="selling price" class="form-control" value="{{ $item->sellingPrice }}"/>
+              <input name="costs" placeholder="costs" class="form-control" value="{{ $item->costs }}"/>
+              <input name="links" placeholder="links" class="form-control" value="{{ $item->links }}"/>
 
               <button input="submit">Update</button>
             </form>
@@ -71,7 +67,7 @@
 
 
         <!-- TRY DELETE FIRST -->
-            <form method="POST" action="{{ url('/'.$post->id) }}">
+            <form method="POST" action="{{ url('/'.$item->id) }}">
               @method('DELETE')
               @csrf
               <button style="background: pink" input="submit">Delete</button>
@@ -91,8 +87,3 @@ p {
     color: white
 }
 </style>
-
-{{-- shorthand @ --}}
-{{-- @foreach ($posts as $post)
-    <div>{{ $post->title }}</div>
-@endforeach --}}

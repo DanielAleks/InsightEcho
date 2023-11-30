@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Post extends Model
+class Research extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
-    public $table = 'posts';
+    public $table = 'productresearch';
 
     protected static function boot()
     {
@@ -23,5 +23,6 @@ class Post extends Model
         });
     }
 
-    protected $fillable = ['title', 'body', 'setting', 'avg_video_length', 'hook', 'transitions', 'lighting', 'music'];
+    protected $fillable = ['title', 'targetMarket', 'avatar', 'currentState', 'dreamState', 'roadBlocks', 'solution', 'product'];
+
 }

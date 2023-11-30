@@ -10,7 +10,10 @@ class PostsController extends Controller
 {
     public function index() {
         $posts = Post::all();
-        return response()->json($posts);
+        // return response()->json($posts);
+
+        // 'Posts/Index'
+        return Inertia::render('posts', ['posts' => $posts]);
 
         // FOR SETTING UP INERTIA frontend responses
         //     $data = [
@@ -43,6 +46,13 @@ class PostsController extends Controller
         $post = Post::where('id', $id)->first();
         // $request does not exist, this gives error
         $post->title = $request->input('title');
+        $post->setting = $request->input('setting');
+        $post->avg_video_length = $request->input('avg_video_length');
+        $post->hook = $request->input('hook');
+        $post->transitions = $request->input('transitions');
+        $post->lighting = $request->input('lighting');
+        $post->music = $request->input('music');
+
         $post->save();
         return dd($post);
     }

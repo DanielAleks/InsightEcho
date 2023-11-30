@@ -1,33 +1,44 @@
 <template>
-    <div class="flex flex-col items-center mt-40">
-        <h2 class="text-2xl mb-5 font-medium">Make Unique DIY Projects In Less Than <span class="text-orange-400">5 Minutes</span></h2>
-        <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow">
-            <div class="flex">
-
-                <div class="w-1/2" >
-            <img  src="https://thumbor.bigedition.com/a-proboscis-monkey-in-a-lush-exotic-forest/y_ORD8Ms2TpaHKZ_tEfPMFXi7Qo=/30x0:1145x836/800x0/filters:quality(80)/granite-web-prod/06/e4/06e41ba2dea9480f9f3543caa8223e31.jpeg"/>
-    <div class="grid grid-cols-4 gap-3 mt-3">
-        <img src="https://thumbor.bigedition.com/a-proboscis-monkey-in-a-lush-exotic-forest/y_ORD8Ms2TpaHKZ_tEfPMFXi7Qo=/30x0:1145x836/800x0/filters:quality(80)/granite-web-prod/06/e4/06e41ba2dea9480f9f3543caa8223e31.jpeg"/>
-        <img src="https://thumbor.bigedition.com/a-proboscis-monkey-in-a-lush-exotic-forest/y_ORD8Ms2TpaHKZ_tEfPMFXi7Qo=/30x0:1145x836/800x0/filters:quality(80)/granite-web-prod/06/e4/06e41ba2dea9480f9f3543caa8223e31.jpeg"/>
-        <img src="https://thumbor.bigedition.com/a-proboscis-monkey-in-a-lush-exotic-forest/y_ORD8Ms2TpaHKZ_tEfPMFXi7Qo=/30x0:1145x836/800x0/filters:quality(80)/granite-web-prod/06/e4/06e41ba2dea9480f9f3543caa8223e31.jpeg"/>
-        <img src="https://thumbor.bigedition.com/a-proboscis-monkey-in-a-lush-exotic-forest/y_ORD8Ms2TpaHKZ_tEfPMFXi7Qo=/30x0:1145x836/800x0/filters:quality(80)/granite-web-prod/06/e4/06e41ba2dea9480f9f3543caa8223e31.jpeg"/>
+    <div class="mt-16 flex flex-col items-center justify-center" >
+      <div class="grid grid-cols-4">
+      <div class="bg-white w-80 p-5 my-5 rounded-lg flex flex-col shadow-lg ml-20">
+      <p class="text-lg font-bold">Competitor Checklist</p>
+      <hr class="mb-5"/>
+      <div class="grid grid-cols-2 gap-4">
+      <div v-for="item in checklistInputs">
+            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ item.name }}</label>
+            <input v-model="item.input" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-5 mt-3">
+        <button disabled class="btn bg-indigo-400 text-white rounded mt-3 px-5 py-2 cursor-not-allowed">
+        Add item
+      </button>
+      <button @click="createChecklist" class="btn bg-gray-700 text-white rounded mt-3 px-5 py-2">
+        Submit
+      </button>
     </div>
-</div>
 
+    </div>
 
-            <div class="mx-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Customizer Engraving Pen Made For DIYers</h5>
-    <p class="font-normal text-gray-700 dark:text-gray-400">Info</p>
-    <button class="btn bg-blue-400 py-3 px-7 rounded text-lg text-white w-full">Add To Cart 
-      <font-awesome-icon :icon="['fas', 'cart-shopping']" />d
-
-
-    </button>
-</div>
-
-</div>
-</div>
-
+    <div class="grid grid-cols-2 w-[60vw] ml-28" >
+    <div
+    v-for="item in storedItems"
+    class="bg-white shadow-lg w-80 p-5 my-5 rounded-lg justify-self-center">
+      <p class="text-lg font-bold">{{ item.title }}</p>
+      <hr class="mb-5"/>
+      <div>
+        <p>Setting: {{ item.setting }}</p>
+        <p>Average Time: {{ item.avg_time }}</p>
+        <p>Hook Angle: {{ item.hook }}</p>
+        <p>Transitions: {{ item.transitions }}</p>
+        <p>Lighting: {{ item.lighting }}</p>
+        <p>Music: {{ item.music }}</p>
+      </div>
+    </div>
+  </div>
+  </div>
 
     </div>
   </template>
@@ -135,7 +146,63 @@
       const get_discover_movies =
         "https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
   
-      return { state, setMovieGenre, movie_list, setFavorite };
+          const storedItems = ref([
+            {
+            title: "The Title",
+            setting: "In the Park",
+            avg_time: 3,
+            hook: "Hello there",
+            transitions: 5,
+            lighting: "Bright",
+            music: "Uplifting",
+    },
+  ])
+
+    const checklistInputs = ref([
+      {
+        name: "Title",
+        input: ref("")
+      },
+      {
+        name: "Setting",
+        input: ref("")
+      },
+      {
+        name: "Average Time",
+        input: ref(0)
+      },
+      {
+        name: "Hook",
+        input: ref("")
+      },
+      {
+        name: "Transitions",
+        input: ref(0)
+      },
+      {
+        name: "Lighting",
+        input: ref("")
+      },
+      {
+        name: "Music",
+        input: ref("")
+      },
+    ])
+
+    function createChecklist() {
+      console.log(checklistInputs, "checklistInputs")
+      storedItems.value.push({
+            title: checklistInputs.value[0].input,
+            setting: checklistInputs.value[1].input,
+            avg_time: checklistInputs.value[2].input, 
+            hook: checklistInputs.value[3].input,
+            transitions: checklistInputs.value[4].input,
+            lighting: checklistInputs.value[5].input,
+            music: checklistInputs.value[6].input,
+    })
+    }
+
+      return { state, setMovieGenre, movie_list, setFavorite, storedItems, checklistInputs, createChecklist };
     },
     mixins: [VueAxios],
   });

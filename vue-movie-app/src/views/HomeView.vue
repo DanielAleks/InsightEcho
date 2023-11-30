@@ -7,12 +7,11 @@ import Footer from "../components/commerce/Footer.vue"
 </script>
 
 <template>
-  <main >
+  <main class="overflow-x-hidden ml-[-2rem] w-[100vw]">
     <div>
     <SideNavbar />
-    <div class="ml-10"></div>
     <HomePage />
-    <Footer />
+    <!-- <Footer /> -->
     </div>
   </main>
 </template>
