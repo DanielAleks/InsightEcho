@@ -15,6 +15,13 @@ class UpdatePostsTable extends Migration
     {
         Schema::table('posts', function (BluePrint $table) {
             $table->string('title')->nullable();
+            $table->json('targetMarket')->nullable();
+            $table->json('avatar')->nullable();
+            $table->json('currentState')->nullable();
+            $table->json('dreamState')->nullable();
+            $table->json('roadBlocks')->nullable();
+            $table->json('solution')->nullable();
+            $table->json('product')->nullable();
         });
     }
 

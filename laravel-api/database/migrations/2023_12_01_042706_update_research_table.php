@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResearchTable extends Migration
+class UpdateResearchTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateResearchTable extends Migration
      */
     public function up()
     {
-        Schema::create('research', function (Blueprint $table) {
-            $table->id();
+        Schema::table('research', function (BluePrint $table) {
+            $table->string('title')->nullable();
         });
     }
 
@@ -25,6 +25,8 @@ class CreateResearchTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('research');
+        Schema::table('research', function (BluePrint $tabe) {
+            $table->dropColumn(['category']);
+        });
     }
 }

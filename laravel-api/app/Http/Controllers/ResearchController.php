@@ -27,15 +27,25 @@ class ResearchController extends Controller
         $research = Research::where('id', $id)->first();
         // $request does not exist, this gives error
         $research->title = $request->input('title');
-        $research->setting = $request->input('setting');
-        $research->avg_video_length = $request->input('avg_video_length');
-        $research->hook = $request->input('hook');
-        $research->transitions = $request->input('transitions');
-        $research->lighting = $request->input('lighting');
-        $research->music = $request->input('music');
+        $research->targetMarket = $request->input('targetMarket');
+        $research->avatar = $request->input('avatar');
+        $research->currentState = $request->input('currentState');
+        $research->dreamState = $request->input('dreamState');
+        // $research->roadBlocks = $request->input('roadBlocks');
+        $research->solution = $request->input('solution');
+        $research->product = $request->input('product');
+
+        $oldRoadBlocks = json_decode($research->roadBlocks, true) ?: []; // Decode the existing JSON to a PHP array
+        $newRoadBlock = $request->input('roadBlocks'); // Get the new road block from the form
+        $oldRoadBlocks[] = $newRoadBlock; // Add the new road block to the array
+        $research->roadBlocks = json_encode($oldRoadBlocks); // Convert the PHP array back to JSON
 
         $research->save();
         return dd($research);
+
+
+
+      
     }
 
     public function delete($id) {
