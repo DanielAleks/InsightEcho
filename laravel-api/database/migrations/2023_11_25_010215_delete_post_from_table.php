@@ -15,7 +15,7 @@ class DeletePostFromTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             // $table->delete()
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

@@ -71,7 +71,7 @@
 
 
         <!-- TRY DELETE FIRST -->
-            <form method="POST" action="{{ url('/'.$res->id) }}">
+            <form method="POST" action="{{ url('/research/'.$res->id) }}">
               @method('DELETE')
               @csrf
               <button style="background: pink" input="submit">Delete</button>

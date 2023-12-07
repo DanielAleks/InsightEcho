@@ -11,7 +11,7 @@
 <body>
     <div style="background: rgb(35, 42, 93); height: 100vh; width: 100vw; padding: 1rem">
             <div style="margin-left: 10rem">
-                <div  style="position: absolute; right: 25rem; bottom: 5rem;">
+                <div  style="position: fixed; z-index: 10000; right: 0rem; bottom: 5rem; background: lightblue">
                   <form method="POST">
     @csrf
     <div class="form-group">

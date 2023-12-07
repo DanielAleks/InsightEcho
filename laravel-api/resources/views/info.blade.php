@@ -11,7 +11,7 @@
 <body>
     <div style="background: rgb(35, 42, 93); height: 100vh; width: 100vw; padding: 1rem">
             <div style="margin-left: 10rem">
-                <div  style="position: absolute; right: 25rem; bottom: 5rem;">
+                <div  style="position: fixed; right: 2rem; bottom: 5rem;">
                   <form method="POST">
     @csrf
     <div class="form-group">
@@ -25,7 +25,7 @@
     <div class="form-group">
       <button type="submit" style="margin-top: 1rem">Create Task</button>
     </div>
-  </form>
+    </form>
   </div>
 
 
@@ -50,7 +50,7 @@
 
 <!-- CRUD is done, with all fields (should have option to add to the column) -->
 <!-- Other sections: ProductInfo, ProductResearch, routes: info/, research/ -->
-                <form method="POST" action="{{ url('/'.$item->id) }}">
+                <form method="POST" action="{{ url('/info/'.$item->id) }}">
               @method('PATCH')
               @csrf
               <!-- <input type="hidden" name="title" value="{{ $item->title }}"> -->
@@ -67,7 +67,7 @@
 
 
         <!-- TRY DELETE FIRST -->
-            <form method="POST" action="{{ url('/'.$item->id) }}">
+            <form method="POST" action="{{ url('/info/'.$item->id) }}">
               @method('DELETE')
               @csrf
               <button style="background: pink" input="submit">Delete</button>
