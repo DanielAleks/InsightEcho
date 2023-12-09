@@ -40,6 +40,9 @@
   </div>
   </div>
 
+
+
+
     </div>
   </template>
   
@@ -202,9 +205,14 @@
     })
     }
 
-      return { state, setMovieGenre, movie_list, setFavorite, storedItems, checklistInputs, createChecklist };
+
+
+      return { state, setMovieGenre, movie_list, setFavorite, storedItems, checklistInputs, createChecklist,
+      
+          };
     },
     mixins: [VueAxios],
   });
   </script>
   
+

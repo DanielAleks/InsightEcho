@@ -1,7 +1,7 @@
 <template>
-  <nav style="background-color: #292929;" class=" fixed z-10 top-0 w-full left-0">
+  <nav style="background-color: #292929;" class=" fixed z-10 top-[-1rem] left-4">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
+    <div class="relative flex h-8 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
         <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
@@ -32,10 +32,10 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
+            <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Dashboard'" @click="state.activeNavbarItem = 'Dashboard'">Dashboard</a>
+            <a href="/competitor-checklist" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'CompetitorChecklist'" @click="state.activeNavbarItem = 'CompetitorChecklist'">Competitor Checklist</a>
+            <a href="/research" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Research'" @click="state.activeNavbarItem = 'Research'">Research</a>
+            <a href="/info" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Info'" @click="state.activeNavbarItem = 'Info'">Product Info</a>
           </div>
         </div>
       </div>
@@ -99,6 +99,7 @@ export default defineComponent({
   setup() {
     const state = reactive({
       value: "",
+      activeNavbarItem: "Dashboard"
     });
 
     const routeLinks = [
