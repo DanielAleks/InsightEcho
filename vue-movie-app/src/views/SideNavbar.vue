@@ -33,7 +33,7 @@
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Dashboard'" @click="state.activeNavbarItem = 'Dashboard'">Dashboard</a>
-            <a href="/competitor-checklist" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'CompetitorChecklist'" @click="state.activeNavbarItem = 'CompetitorChecklist'">Competitor Checklist</a>
+            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'CompetitorChecklist'" @click="state.activeNavbarItem = 'CompetitorChecklist'">Competitor Checklist</a>
             <a href="/research" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Research'" @click="state.activeNavbarItem = 'Research'">Research</a>
             <a href="/info" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="state.activeNavbarItem === 'Info'" @click="state.activeNavbarItem = 'Info'">Product Info</a>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <main class="overflow-x-hidden ml-[-2rem] w-[100vw]">
+  <main class="overflow-x-hidden ml-[-2rem] w-[96vw]">
     <SideNavbar />
   <Notification v-if="state.showNotification" :message="dynamicMessage" />
   <RouterView :setNotification="setNotification" />
