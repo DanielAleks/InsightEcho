@@ -42,7 +42,12 @@
       </div>
     </div>
   </div>
+
+  <button  @click="state.isModalOpen = true" class="button bg-blue-500 absolute right-72 top-5 h-10 w-40 text-white rounded">Research Docs</button>
+
   </div>
+
+  
 
 <!-- Card List Section -->
 <section  class="bg-gray-100 dark:bg-gray-900 py-10 px-4 w-[90%] overflow-x-hidden">
@@ -56,7 +61,7 @@
                 :key="index"
                 >
                 <!-- Clickable Area -->
-                <a _href="link" class="cursor-pointer"  @click="state.isModalOpen = true">
+                <a :href="'/research/' + index" class="cursor-pointer" >
                     <figure>
                         <img
                             :src="post.image + '?auto=format&fit=crop&w=400&q=50'"
@@ -142,13 +147,6 @@
     </div>
   </div>
 </div>
-            </div>
-
-            
-            <!-- Modal footer -->
-            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-                <button data-modal-hide="default-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
             </div>
         </div>
     </div>
