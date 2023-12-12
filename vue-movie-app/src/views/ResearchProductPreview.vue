@@ -1,11 +1,29 @@
 <template>
     <div class="flex">
-        <button class="absolute right-0 bottom-5 rounded-full bg-blue-600 button h-10 w-10 text-gray-200 flex justify-center border-b-4 border-blue-400 hover:border-blue-500 hover:bg-blue-400 items-center shadow-3xl cursor-pointer shadow-black"><Pencil class="h-5"/></button>
+        <button type="submit" @click="state.editMode = !state.editMode" class="absolute right-0 top-24 rounded-full bg-blue-600 button h-10 w-10 text-gray-200 flex justify-center border-b-4 border-blue-400 hover:border-blue-500 hover:bg-blue-700 active:bg-blue-600 items-center shadow-3xl cursor-pointer shadow-black z-10"><Pencil class="h-5" style="cursor: pointer;"/></button>
     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" class="w-[60vw] h-[90vh] mt-10"/>
 
-    <div class="p-4 md:p-5 space-y-0 mt-10 w-[40vw]">
-              <div @click="toggleResearchTab(item)" id="accordion-collapse" data-accordion="collapse" v-for="item in researchTypes">
-  <h2 id="accordion-collapse-heading-1">
+    <div class="p-4 md:p-5 space-y-0 mt-28 w-[40vw]">
+      <div >
+</div>
+
+      <div v-if="state.editMode" v-for="item in researchTypes">
+<form>
+        <div>
+            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+{{ item.title }}
+
+            </label>
+            <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="item.title" required>
+        </div>
+       
+</form>
+
+  </div>
+
+
+              <div @click="toggleResearchTab(item)" id="accordion-collapse"  data-accordion="collapse" v-for="item in researchTypes">
+  <h2 id="accordion-collapse-heading-1" >
     <button @click="" type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
       <span>{{ item.title }}</span>
       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -13,6 +31,9 @@
       </svg>
     </button>
   </h2>
+
+
+
   <div v-if="state.viewResearchTab === item.title" id="accordion-collapse-body-1" aria-labelledby="accordion-collapse-heading-1  border border-b-0">
     <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
 
@@ -38,7 +59,8 @@ export default {
     },
     setup() {
         const state = reactive({
-            viewResearchTab: ""
+            viewResearchTab: "",
+            editMode: false
         })
 
         const researchTypes = [
