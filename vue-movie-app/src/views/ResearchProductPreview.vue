@@ -1,11 +1,18 @@
 <template>
     <div class="flex">
         <button type="submit" @click="state.editMode = !state.editMode" class="absolute right-0 top-24 rounded-full bg-blue-600 button h-10 w-10 text-gray-200 flex justify-center border-b-4 border-blue-400 hover:border-blue-500 hover:bg-blue-700 active:bg-blue-600 items-center shadow-3xl cursor-pointer shadow-black z-10"><Pencil class="h-5" style="cursor: pointer;"/></button>
-    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" class="w-[60vw] h-[90vh] mt-10"/>
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" class="w-[55vw] h-[95vh] mt-10"/>
 
     <div class="p-4 md:p-5 space-y-0 mt-28 w-[40vw]">
       <div >
 </div>
+
+
+<!-- v-if="item.key === 'feature' || item.key === 'benefit'" -->
+<!-- <TrixComponent
+                id="1"
+              /> -->
+              <!-- :setValue="setTrixData" -->
 
       <div v-if="state.editMode" v-for="item in researchTypes">
 <form>
@@ -24,11 +31,19 @@
 
               <div @click="toggleResearchTab(item)" id="accordion-collapse"  data-accordion="collapse" v-for="item in researchTypes">
   <h2 id="accordion-collapse-heading-1" >
-    <button @click="" type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+    <button @click="" type="button" class="flex items-center justify-between w-full font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
       <span>{{ item.title }}</span>
       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
       </svg>
+      <div class="flex">
+      <div class="border-l border-t border-gray-900 h-16 w-16 justify-center items-center flex">
+      <Eye/>
+    </div>
+    <div class="border-r border-l  border-t border-gray-900 h-16 w-16 justify-center items-center flex">
+      <Plus/>
+      </div>
+    </div>
     </button>
   </h2>
 
@@ -51,11 +66,14 @@
 
 <script>
 import { reactive } from 'vue'
-import {Pencil} from "lucide-vue-next"
-
+import {Pencil, Eye, Plus} from "lucide-vue-next"
+import TrixComponent from "../components/reusables/TrixComponent.vue"
 export default {
     components: {
-        Pencil
+        Pencil,
+        TrixComponent,
+        Eye,
+        Plus
     },
     setup() {
         const state = reactive({
