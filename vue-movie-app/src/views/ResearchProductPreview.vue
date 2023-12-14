@@ -8,11 +8,41 @@
 </div>
 
 
-<!-- v-if="item.key === 'feature' || item.key === 'benefit'" -->
-<!-- <TrixComponent
+
+
+<div>
+  <div class="flex justify-center">
+<p class="text-xl mb-2 text-center">{{ researchTypes.filter((item) => item.title === state.viewResearchTab)[0].title }} </p>
+<button @click="state.showSectionInfo = !state.showSectionInfo" class="bg-sky-200 hover:bg-sky-400 active:bg-sky-300 rounded-full h-6 mt-1 ml-3"><Info/></button>
+</div>
+
+
+<div class="-mr-10 pl-10 mb-10">
+<ul class="list-decimal" v-if="state.showSectionInfo">
+        <li v-for="(section, id) in getSections(researchTypes.filter((item) => item.title === state.viewResearchTab)[0].description)" v-if="id !== 0"
+        >{{ section }}</li>
+      </ul>
+
+      <TrixComponent
                 id="1"
-              /> -->
+                class="mt-10"
+              />
               <!-- :setValue="setTrixData" -->
+      
+        <div class="my-7">Here is my Information and there should be Trix if editmode is on</div>
+      </div>
+</div>
+
+
+
+              <div class="flex justify-center mb-20 ml-10" @click="toggleResearchTab(item)" v-for="item in researchTypes">
+              <button class="bg-gray-600 my-3 button h-10 w-80 rounded-md text-gray-200 flex justify-center border-b-4 border-gray-700 hover:border-indigo-400 hover:bg-indigo-500 active:bg-indigo-600 items-center shadow-3xl cursor-pointer shadow-black z-10">
+              {{ item.title }}
+            </button>
+              </div>
+
+
+
 
       <div v-if="state.editMode" v-for="item in researchTypes">
 <form>
@@ -29,36 +59,6 @@
   </div>
 
 
-              <div @click="toggleResearchTab(item)" id="accordion-collapse"  data-accordion="collapse" v-for="item in researchTypes">
-  <h2 id="accordion-collapse-heading-1" >
-    <button @click="" type="button" class="flex items-center justify-between w-full font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-      <span>{{ item.title }}</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-      <div class="flex">
-      <div class="border-l border-t border-gray-900 h-16 w-16 justify-center items-center flex">
-      <Eye/>
-    </div>
-    <div class="border-r border-l  border-t border-gray-900 h-16 w-16 justify-center items-center flex">
-      <Plus/>
-      </div>
-    </div>
-    </button>
-  </h2>
-
-
-
-  <div v-if="state.viewResearchTab === item.title" id="accordion-collapse-body-1" aria-labelledby="accordion-collapse-heading-1  border border-b-0">
-    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-
-      <ul class="list-decimal">
-        <li v-for="(section, id) in getSections(item.description)" v-if="id !== 0"
-        >{{ section }}</li>
-      </ul>
-    </div>
-  </div>
-</div>
 </div>
 
             </div>
@@ -66,19 +66,21 @@
 
 <script>
 import { reactive } from 'vue'
-import {Pencil, Eye, Plus} from "lucide-vue-next"
+import {Pencil, Eye, Plus, Info} from "lucide-vue-next"
 import TrixComponent from "../components/reusables/TrixComponent.vue"
 export default {
     components: {
         Pencil,
         TrixComponent,
         Eye,
-        Plus
+        Plus,
+        Info
     },
     setup() {
         const state = reactive({
             viewResearchTab: "",
-            editMode: false
+            editMode: false,
+            showSectionInfo: false,
         })
 
         const researchTypes = [

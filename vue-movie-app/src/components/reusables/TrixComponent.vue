@@ -1,6 +1,5 @@
 <template>
     <div>
-        Trix Input
         <input
           ref="inputElement"
           :id="id"
