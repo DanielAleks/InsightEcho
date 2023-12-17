@@ -24,6 +24,7 @@
       </ul>
 
       <TrixComponent
+      v-if="state.editMode"
                 id="1"
                 class="mt-10"
               />
@@ -34,33 +35,12 @@
 </div>
 
 
-
               <div class="flex justify-center mb-20 ml-10" @click="toggleResearchTab(item)" v-for="item in researchTypes">
-              <button class="bg-gray-600 my-3 button h-10 w-80 rounded-md text-gray-200 flex justify-center border-b-4 border-gray-700 hover:border-indigo-400 hover:bg-indigo-500 active:bg-indigo-600 items-center shadow-3xl cursor-pointer shadow-black z-10">
+              <button :class="item.title === state.viewResearchTab ? 'bg-indigo-500' : ''" class="bg-gray-600 my-3 button h-10 w-80 rounded-md text-gray-200 flex justify-center border-b-4 border-gray-700 hover:border-indigo-400 hover:bg-indigo-500 active:bg-indigo-600 items-center shadow-3xl cursor-pointer shadow-black z-10">
               {{ item.title }}
             </button>
               </div>
-
-
-
-
-      <div v-if="state.editMode" v-for="item in researchTypes">
-<form>
-        <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-{{ item.title }}
-
-            </label>
-            <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" :placeholder="item.title" required>
-        </div>
-       
-</form>
-
-  </div>
-
-
 </div>
-
             </div>
 </template>
 
@@ -78,7 +58,7 @@ export default {
     },
     setup() {
         const state = reactive({
-            viewResearchTab: "",
+            viewResearchTab: "Target Market",
             editMode: false,
             showSectionInfo: false,
         })

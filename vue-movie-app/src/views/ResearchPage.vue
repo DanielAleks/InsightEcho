@@ -1,56 +1,12 @@
 <template>
-    <div class="mt-16 flex flex-col items-center justify-center w-[100vw] overflow-x-hidden" >
-      <div class="grid grid-cols-4 overflow-x-hidden">
-      <div class="bg-white w-80 p-5 my-5 rounded-lg flex flex-col shadow-lg ml-20 ">
-      <p class="text-lg font-bold">Research Page</p>
-      <hr class="mb-5"/>
-      <div class="grid grid-cols-2 gap-4">
-      <div v-for="item in checklistInputs">
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ item.name }}</label>
-            <input v-model="item.input" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
-        </div>
-      </div>
-      
-      <div class="grid grid-cols-2 gap-5 mt-3">
-        <button disabled class="btn bg-indigo-400 text-white rounded mt-3 px-5 py-2 cursor-not-allowed">
-        Add item
-      </button>
-      <button @click="createChecklist" class="btn bg-gray-700 text-white rounded mt-3 px-5 py-2">
-        Submit
-      </button>
-    </div>
-
-    </div>
-
-    <div class="grid grid-cols-2 w-[50vw] ml-40 overflow-x-hidden" >
-    <div
-    v-for="item in storedItems"
-    class="bg-white shadow-lg w-80 p-5 my-5 rounded-lg justify-self-center">
-      <p class="text-lg font-bold">{{ item.title }}</p>
-      <hr class="mb-5"/>
-      <div>
-        <p>Title</p>
-        <p>Target Market</p>
-        <p>Avatar</p>
-        <p>Current State</p>
-        <p>Dream State</p>
-        <p>Road Blocks</p>
-        <p>Solution</p>
-        <p>Product</p>
-        <p>Updated At</p>
-        <p>Created At</p>
-      </div>
-    </div>
-  </div>
-
-  <button  @click="state.isModalOpen = true" class="button bg-blue-500 absolute right-72 top-5 h-10 w-40 text-white rounded">Research Docs</button>
-
-  </div>
-
-  
+    <div class="mt-16 flex flex-col items-center justify-center w-[100vw] overflow-x-hidden" >  
 
 <!-- Card List Section -->
 <section  class="bg-gray-100 dark:bg-gray-900 py-10 px-4 w-[90%] overflow-x-hidden">
+ <div class="flex justify-end">
+  <button  @click="state.isModalOpen = true" class="button bg-blue-500 h-10 w-40 text-white rounded flex justify-center items-center">Research Docs <Eye class="ml-2"/></button>
+</div>
+
     <!-- Card Grid -->
     <div
         class="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -171,11 +127,12 @@
   import { defineComponent, reactive, onMounted, ref, inject } from "vue";
   import axios from "axios";
   import VueAxios from "vue-axios";
-  import { Heart } from "lucide-vue-next"
+  import { Heart, Eye } from "lucide-vue-next"
   
   export default defineComponent({
     components: {
       Heart,
+      Eye
     },
     props: {
       setNotification: Function,

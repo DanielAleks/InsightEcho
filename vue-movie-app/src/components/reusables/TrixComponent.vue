@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-red w-[28rem]">
         <input
           ref="inputElement"
           :id="id"
