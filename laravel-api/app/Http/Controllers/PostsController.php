@@ -15,6 +15,10 @@ class PostsController extends Controller
         // 'Posts/Index'
         return Inertia::render('posts', ['posts' => $posts]);
 
+            // or do
+        // return inertia(component: 'Posts/Index', compact( var_name: 'posts' ))
+
+
         // FOR SETTING UP INERTIA frontend responses
         //     $data = [
         //         // Your data here

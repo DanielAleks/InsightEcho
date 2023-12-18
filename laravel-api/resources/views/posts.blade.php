@@ -1,6 +1,18 @@
 @extends ('layout')
 
-<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    @vite('resources/js/app.js')
+    @inertiaHead
+  </head>
+  <body>
+    @inertia
+  </body>
+</html>
+
+<!-- <!doctype html>
 
 <link rel="stylesheet" href="/app.css">
 
@@ -27,12 +39,7 @@
     </div>
   </form>
   </div>
-
-
-                   
                     <p style="margin-top: 2rem; font-size: 30px; font-weight: 700">Product Posts</p>
-
-                    <!-- {{-- <div @if (addTask === true) @endif> --}} -->
                 </div>
             </div>
 
@@ -50,12 +57,9 @@
                 <p>Music: {{ $post->music }}</p>
 
 
-<!-- CRUD is done, with all fields (should have option to add to the column) -->
-<!-- Other sections: ProductInfo, ProductResearch, routes: info/, research/ -->
                 <form method="POST" action="{{ url('/'.$post->id) }}">
               @method('PATCH')
               @csrf
-              <!-- <input type="hidden" name="title" value="{{ $post->title }}"> -->
               <input name="title" placeholder="Title" class="form-control" value="{{ $post->title }}"/>
               <input name="setting" placeholder="Setting" class="form-control" value="{{ $post->setting }}"/>
               <input name="avg_video_length" type="number" placeholder="Average Video Length" class="form-control" value="{{ $post->avg_video_length }}"/>
@@ -70,7 +74,6 @@
 
 
 
-        <!-- TRY DELETE FIRST -->
             <form method="POST" action="{{ url('/'.$post->id) }}">
               @method('DELETE')
               @csrf
@@ -90,9 +93,15 @@
 p {
     color: white
 }
-</style>
+</style> 
 
 {{-- shorthand @ --}}
 {{-- @foreach ($posts as $post)
     <div>{{ $post->title }}</div>
-@endforeach --}}
+@endforeach --}} -->
+
+
+
+
+
+

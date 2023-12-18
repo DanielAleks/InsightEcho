@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Info;
 use App\Models\Research;
+use Inertia\Inertia;
 
 // Posts
 Route::get('/', 'App\Http\Controllers\PostsController@index');
 Route::get('/', 'App\Http\Controllers\PostsController@create');
 Route::post('/', 'App\Http\Controllers\PostsController@store');
 Route::get('/', function () {
-    return view('posts', [
+    return Inertia::render('posts', [
         'posts' => Post::all()
     ]);
 });
