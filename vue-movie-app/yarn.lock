@@ -709,6 +709,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@inertiajs/core@npm:1.0.14":
+  version: 1.0.14
+  resolution: "@inertiajs/core@npm:1.0.14"
+  dependencies:
+    axios: "npm:^1.2.0"
+    deepmerge: "npm:^4.0.0"
+    nprogress: "npm:^0.2.0"
+    qs: "npm:^6.9.0"
+  checksum: 6c1dc784e16e5d0fd1d957f180128f8f347d9e1191fb51b4c6ebc556763ee4e78dcef233b70947ed32f297bc8dadb7c08def1bd01b30d771a26fc55e40076a38
+  languageName: node
+  linkType: hard
+
+"@inertiajs/vue3@npm:^1.0.14":
+  version: 1.0.14
+  resolution: "@inertiajs/vue3@npm:1.0.14"
+  dependencies:
+    "@inertiajs/core": "npm:1.0.14"
+    lodash.clonedeep: "npm:^4.5.0"
+    lodash.isequal: "npm:^4.5.0"
+  peerDependencies:
+    vue: ^3.0.0
+  checksum: 4b5bd3c49e21ce91765d7458a8981ac3d35d310e06e5ea229a29dd850487d53df533000be06aedecafe16c7cbc769dabcc5573217afd047c3c7241c99253f79f
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -1723,7 +1748,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.3.5, axios@npm:^1.6.1":
+"axios@npm:^1.2.0, axios@npm:^1.3.5, axios@npm:^1.6.1":
   version: 1.6.2
   resolution: "axios@npm:1.6.2"
   dependencies:
@@ -2349,6 +2374,13 @@ __metadata:
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
   checksum: 7f0ee496e0dff14a573dc6127f14c95061b448b87b995fc96c017ce0a1e66af1675e73f1d6064407975bc4ea6ab679497a29fff7b5b9c4e99cb10797c1ad0b4c
+  languageName: node
+  linkType: hard
+
+"deepmerge@npm:^4.0.0":
+  version: 4.3.1
+  resolution: "deepmerge@npm:4.3.1"
+  checksum: e53481aaf1aa2c4082b5342be6b6d8ad9dfe387bc92ce197a66dea08bd4265904a087e75e464f14d1347cf2ac8afe1e4c16b266e0561cc5df29382d3c5f80044
   languageName: node
   linkType: hard
 
@@ -4343,6 +4375,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.clonedeep@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clonedeep@npm:4.5.0"
+  checksum: 2caf0e4808f319d761d2939ee0642fa6867a4bbf2cfce43276698828380756b99d4c4fa226d881655e6ac298dd453fe12a5ec8ba49861777759494c534936985
+  languageName: node
+  linkType: hard
+
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: dfdb2356db19631a4b445d5f37868a095e2402292d59539a987f134a8778c62a2810c2452d11ae9e6dcac71fc9de40a6fedcb20e2952a15b431ad8b29e50e28f
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -4817,6 +4863,13 @@ __metadata:
   dependencies:
     path-key: "npm:^3.0.0"
   checksum: 6f9353a95288f8455cf64cbeb707b28826a7f29690244c1e4bb61ec573256e021b6ad6651b394eb1ccfd00d6ec50147253aba2c5fe58a57ceb111fad62c519ac
+  languageName: node
+  linkType: hard
+
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: eab9a923a1ad1eed71a455ecfbc358442dd9bcd71b9fa3fa1c67eddf5159360b182c218f76fca320c97541a1b45e19ced04e6dcb044a662244c5419f8ae9e821
   languageName: node
   linkType: hard
 
@@ -5368,6 +5421,15 @@ __metadata:
   dependencies:
     side-channel: "npm:^1.0.4"
   checksum: 7a8c9d77968aeccb769aedd7e047c0e0109dad0cfa57cab1ad906f4069fd58f361b80abd2de5854ba9a09b4c5d06d6a2c82108766f1f1527572fe6130deaa471
+  languageName: node
+  linkType: hard
+
+"qs@npm:^6.9.0":
+  version: 6.11.2
+  resolution: "qs@npm:6.11.2"
+  dependencies:
+    side-channel: "npm:^1.0.4"
+  checksum: 4f95d4ff18ed480befcafa3390022817ffd3087fc65f146cceb40fc5edb9fa96cb31f648cae2fa96ca23818f0798bd63ad4ca369a0e22702fcd41379b3ab6571
   languageName: node
   linkType: hard
 
@@ -6723,6 +6785,7 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": "npm:^6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
     "@fortawesome/vue-fontawesome": "npm:^3.0.3"
+    "@inertiajs/vue3": "npm:^1.0.14"
     "@rushstack/eslint-patch": "npm:^1.2.0"
     "@types/jsdom": "npm:^21.1.0"
     "@types/node": "npm:^18.14.2"

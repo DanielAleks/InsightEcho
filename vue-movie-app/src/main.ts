@@ -1,5 +1,6 @@
-import { createApp } from 'vue'
+import { createApp,  h  } from 'vue'
 import { createPinia } from 'pinia'
+import { createInertiaApp } from '@inertiajs/vue3'
 
 import App from './App.vue'
 import router from './router'
@@ -13,8 +14,24 @@ import './assets/main.css'
 library.add(faUserSecret)
 const app = createApp(App)
 
+createInertiaApp({
+    resolve: name => {
+      const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+      return pages[`./Pages/${name}.vue`]
+    },
+    // or resolve
+    // resolve: name => require(`./views/HomeView.vue`)
+    setup({ el, App, props, plugin }) {
+      createApp({ render: () => h(App, props) })
+        .use(plugin)
+        .mount(el)
+    },
+  })
+
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios) // 👈
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')
+
+
