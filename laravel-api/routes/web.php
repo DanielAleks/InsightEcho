@@ -11,12 +11,16 @@ Route::get('/', 'App\Http\Controllers\PostsController@index');
 Route::get('/', 'App\Http\Controllers\PostsController@create');
 Route::post('/', 'App\Http\Controllers\PostsController@store');
 Route::get('/', function () {
-    return Inertia::render('posts', [
+    return view('posts', [
         'posts' => Post::all()
     ]);
 });
 Route::patch('/{id}', 'App\Http\Controllers\PostsController@update');
 Route::delete('/{id}', 'App\Http\Controllers\PostsController@delete');
+Route::resource('posts', 'App\Http\Controllers\PostsController@index');
+
+// Notes Graphql
+// USE Lighthouse and Vue Apollo
 
 // Info(s)
 Route::get('/info', 'App\Http\Controllers\InfoController@index');

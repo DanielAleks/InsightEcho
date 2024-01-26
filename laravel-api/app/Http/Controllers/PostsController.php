@@ -8,6 +8,14 @@ use Inertia\Response;
 
 class PostsController extends Controller
 {
+
+    // public function show(string $id): Response
+    // {
+    //     return Inertia::render('Users/Profile', [
+    //         'user' => User::findOrFail($id)
+    //     ]);
+    // }
+
     public function index() {
         $posts = Post::all();
         // return response()->json($posts);
@@ -28,7 +36,8 @@ class PostsController extends Controller
     }
 
     public function create() {
-        return view('posts.create');
+        // return view('posts.create');
+        return Inertia::render('posts.create');
     }
 
     public function store() {

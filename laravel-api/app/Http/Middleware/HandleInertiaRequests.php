@@ -17,4 +17,6 @@ class HandleInertiaRequests extends Middleware
     {
         return parent::handle($request, $next);
     }
+    protected $rootView = 'layout';
+
 }

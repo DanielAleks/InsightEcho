@@ -1,18 +1,9 @@
 @extends ('layout')
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    @vite('resources/js/app.js')
-    @inertiaHead
-  </head>
-  <body>
-    @inertia
-  </body>
-</html>
 
-<!-- <!doctype html>
+<!-- resources/views/app.blade.php -->
+
+ <!doctype html>
 
 <link rel="stylesheet" href="/app.css">
 
@@ -94,14 +85,3 @@ p {
     color: white
 }
 </style> 
-
-{{-- shorthand @ --}}
-{{-- @foreach ($posts as $post)
-    <div>{{ $post->title }}</div>
-@endforeach --}} -->
-
-
-
-
-
-
