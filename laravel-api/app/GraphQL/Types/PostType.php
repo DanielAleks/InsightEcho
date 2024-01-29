@@ -1,11 +1,10 @@
 <?php
 
-// app/graphql/types/CategoryType 
-
 namespace App\GraphQL\Types;
 
 use App\Models\Post;
 use GraphQL\Type\Definition\Type;
+// use GraphQL;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
@@ -20,18 +19,6 @@ class PostType extends GraphQLType
     public function fields(): array
     {
         return [
-            // 'id' => [
-            //     'type' => Type::nonNull(Type::int()),
-            //     'description' => 'ID of quest'
-            // ],
-            // 'title' => [
-            //     'type' => Type::nonNull(Type::string()),
-            //     'description' => 'Title of the quest'
-            // ],
-            // 'quests' => [
-            //     'type' => Type::listOf(GraphQL::type('Quest')),
-            //     'description' => 'List of quests'
-            // ]
             'title' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'title of post'

@@ -2,7 +2,7 @@
 
 // app/graphql/queries/category/CategoriesQuery 
 
-namespace App\GraphQL\Queries\Post;
+namespace App\GraphQL\Queries\Posts;
 
 use App\Models\Post;
 use GraphQL\Type\Definition\Type;

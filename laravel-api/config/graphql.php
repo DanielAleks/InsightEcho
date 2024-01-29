@@ -72,21 +72,16 @@ return [
     //      ],
     //  ]
     //
-
+    'schemas' => [
         'default' => [
             'query' => [
-                    'post' => \App\GraphQL\Queries\Post\PostQuery::class,
-                    'posts' => \App\GraphQL\Queries\Post\PostsQuery::class,
+                    'post' => \App\GraphQL\Queries\Posts\PostQuery::class,
+                    'posts' => \App\GraphQL\Queries\Posts\PostsQuery::class,
             ],
             'mutation' => [
                     'createPost' => \App\GraphQL\Mutations\Post\CreatePostMutation::class,
-                    'updateCategory' => \App\GraphQL\Mutations\Post\UpdateCategoryMutation::class,
-                    'deleteCategory' => \App\GraphQL\Mutations\Post\DeleteCategoryMutation::class,
-            ],
-            // The types only available in this schema
-            'types' => [
-                'Quest' => \App\GraphQL\Types\QuestType::class,
-                'Post' => \App\GraphQL\Types\PostType::class,
+                    // 'updateCategory' => \App\GraphQL\Mutations\Post\UpdateCategoryMutation::class,
+                    // 'deleteCategory' => \App\GraphQL\Mutations\Post\DeleteCategoryMutation::class,
             ],
 
             // Laravel HTTP middleware
@@ -98,7 +93,7 @@ return [
             // An array of middlewares, overrides the global ones
             'execution_middleware' => null,
         ],
-
+    ],
     // The global types available to all schemas.
     // You can then access it from the facade like this: GraphQL::type('user')
     //
@@ -109,6 +104,8 @@ return [
     // ]
     //
     'types' => [
+        // 'Quest' => \App\GraphQL\Types\QuestType::class,
+        'Post' => \App\GraphQL\Types\PostType::class,
         // ExampleType::class,
         // ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,

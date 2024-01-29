@@ -1,8 +1,8 @@
 <?php
 
-// app/graphql/queries/category/CategoryQuery 
+// app/graphql/queries/post/PostQuery 
 
-namespace App\GraphQL\Queries\Post;
+namespace App\GraphQL\Queries\Posts;
 
 use App\Models\Post;
 use GraphQL\Type\Definition\Type;

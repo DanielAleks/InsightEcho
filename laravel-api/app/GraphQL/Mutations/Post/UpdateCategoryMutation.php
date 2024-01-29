@@ -2,7 +2,7 @@
 
 // app/graphql/mutations/category/UpdateCategoryMutation 
 
-namespace App\GraphQL\Mutations\Category;
+namespace App\GraphQL\Mutations\Post;
 
 use App\Models\Category;
 use GraphQL\Type\Definition\Type;
