@@ -77,11 +77,26 @@ return [
             'query' => [
                     'post' => \App\GraphQL\Queries\Posts\PostQuery::class,
                     'posts' => \App\GraphQL\Queries\Posts\PostsQuery::class,
+                    // add queries
+                    // Research(s)
+                    // 'market' => \App\GraphQL\Queries\Posts\MarketQuery::class,
+                    // 'markets' => \App\GraphQL\Queries\Posts\MarketsQuery::class,
+                    // Info(s)
+                    // 'specifications' => \App\GraphQL\Queries\Posts\SpecificationQuery::class,
+                    // 'specifications' => \App\GraphQL\Queries\Posts\SpecificationsQuery::class,
             ],
             'mutation' => [
                     'createPost' => \App\GraphQL\Mutations\Post\CreatePostMutation::class,
-                    // 'updateCategory' => \App\GraphQL\Mutations\Post\UpdateCategoryMutation::class,
-                    // 'deleteCategory' => \App\GraphQL\Mutations\Post\DeleteCategoryMutation::class,
+                    // 'updatePost' => \App\GraphQL\Mutations\Post\UpdatePostMutation::class,
+                    // 'deletePost' => \App\GraphQL\Mutations\Post\DeletePostMutation::class,
+
+                    // 'createMarket' => \App\GraphQL\Mutations\Market\CreateMarketMutation::class,
+                    // 'updateMarket' => \App\GraphQL\Mutations\Market\UpdateMarketMutation::class,
+                    // 'deleteMarket' => \App\GraphQL\Mutations\Market\DeleteMarketMutation::class,
+
+                    // 'createSpecification' => \App\GraphQL\Mutations\Specification\CreateSpecificationMutation::class,
+                    // 'updateSpecification' => \App\GraphQL\Mutations\Specification\UpdateSpecificationMutation::class,
+                    // 'deleteSpecification' => \App\GraphQL\Mutations\Specification\DeleteSpecificationMutation::class,
             ],
 
             // Laravel HTTP middleware

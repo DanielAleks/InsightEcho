@@ -2,17 +2,17 @@
 
 // app/graphql/mutations/category/DeleteCategoryMutation 
 
-namespace App\GraphQL\Mutations\Category;
+namespace App\GraphQL\Mutations\Post;
 
-use App\Models\Category;
+use App\Models\Post;
 use Rebing\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\Type;
 
-class DeleteCategoryMutation extends Mutation
+class DeletePostMutation extends Mutation
 {
     protected $attributes = [
-        'name' => 'deleteCategory',
-        'description' => 'deletes a category'
+        'name' => 'deletePost',
+        'description' => 'deletes a post'
     ];
 
     public function type(): Type
@@ -33,8 +33,8 @@ class DeleteCategoryMutation extends Mutation
 
     public function resolve($root, $args)
     {
-        $category = Category::findOrFail($args['id']);
+        $post = Post::findOrFail($args['id']);
 
-        return  $category->delete() ? true : false;
+        return  $post->delete() ? true : false;
     }
 }

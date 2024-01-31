@@ -42,6 +42,15 @@ class RouteServiceProvider extends ServiceProvider
             return Inertia::render($component, $props);
         });
 
+        Route::group([
+            'middleware' => ['api', 'cors'],
+            'namespace' => $this->namespace,
+            'prefix' => 'api',
+        ], function ($router) {
+             //Add you routes here, for example:
+             Route::apiResource('/posts','PostController');
+        });
+
         parent::boot();
 
         $this->routes(function () {
