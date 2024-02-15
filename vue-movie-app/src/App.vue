@@ -1,24 +1,23 @@
 <template>
   <main class="overflow-x-hidden ml-[-2rem] w-[96vw]">
     <SideNavbar />
-  <Notification v-if="state.showNotification" :message="dynamicMessage" />
-  <RouterView :setNotification="setNotification" />
+    <Notification v-if="state.showNotification" :message="dynamicMessage" />
+    <RouterView :setNotification="setNotification" />
   </main>
 </template>
 
-
 <script>
-import { defineComponent, ref, reactive, onMounted, provide } from "vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-import HelloWorld from "./components/HelloWorld.vue";
-import NewMovies from "./components/NewMovies.vue";
-import SearchMovies from "./components/search/SearchMovies.vue";
-import Notification from "./components/reusables/Notification.vue";
-import SideNavbar from "./views/SideNavbar.vue";
+import { defineComponent, ref, reactive, onMounted, provide } from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import HelloWorld from './components/HelloWorld.vue'
+import NewMovies from './components/NewMovies.vue'
+import SearchMovies from './components/search/SearchMovies.vue'
+import Notification from './components/reusables/Notification.vue'
+import SideNavbar from './views/SideNavbar.vue'
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {
     SearchMovies,
     HelloWorld,
@@ -29,15 +28,15 @@ export default defineComponent({
   setup() {
     const state = ref({
       showGenreModal: false,
-      showNotification: false,
-    });
+      showNotification: false
+    })
 
     function setNotification(message) {
-      state.showNotification = true;
+      state.showNotification = true
       // dynamicMessage.value = message;
       setTimeout(() => {
-        state.showNotification = false;
-      }, 3000);
+        state.showNotification = false
+      }, 3000)
     }
 
     // provide("setNotification", setNotification);
@@ -45,16 +44,16 @@ export default defineComponent({
     // not sure why this is not displaying the notification on load, or even calling the function... dan - 5/9/23
     onMounted(() => {
       // setTimeout(() => {
-      state.showNotification = true;
+      state.showNotification = true
       // }, 1000);
-    });
+    })
     // setNotification("Movie added as favorite!");
 
-    const dynamicMessage = ref("Movie added as favorite!");
+    const dynamicMessage = ref('Movie added as favorite!')
 
-    return { state, dynamicMessage, setNotification };
-  },
-});
+    return { state, dynamicMessage, setNotification }
+  }
+})
 </script>
 
 <style scoped>
@@ -119,4 +118,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style> 
+</style>

@@ -135,7 +135,7 @@
           movie_list.value = response.data;
         });
         setTimeout(() => {
-          console.log(movie_list, "movie_list");
+          // console.log(movie_list, "movie_list");
           // console.log(get_movie_list_discover, "get_movie_list_discover");
         }, 5000);
       });
