@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Ramsey\Uuid\Uuid;
 
 class Research extends Model
@@ -23,6 +25,17 @@ class Research extends Model
         });
     }
 
+    // maybe delete the roadBlocks field or use for something else
     protected $fillable = ['title', 'targetMarket', 'avatar', 'currentState', 'dreamState', 'roadBlocks', 'solution', 'product'];
 
+    // RELATIONSHIPS
+    public function Post(): BelongsTo {
+        return $this->belongsTo(Post::class);
+    }
+    public function Tags(): BelongsToMany {
+        return $this->belongsToMany(Tag::class);
+    }
+    public function RoadBlocks(): BelongsToMany {
+        return $this->belongsToMany(RoadBlock::class);
+    }
 }
