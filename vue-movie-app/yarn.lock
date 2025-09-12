@@ -5028,6 +5028,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nvm@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "nvm@npm:0.0.4"
+  bin:
+    nvm: ./bin/nvm
+  checksum: 7e1f3595a637e406e5badb2a636410ab374f9274cc8830567f8226ea3aa517523a88fdb9c4d3197505552ec8fe663e4ba1508d6d853ba1edbc6a31ac20f8ca40
+  languageName: node
+  linkType: hard
+
 "nwsapi@npm:^2.2.4":
   version: 2.2.7
   resolution: "nwsapi@npm:2.2.7"
@@ -7026,6 +7035,7 @@ __metadata:
     jsdom: "npm:^21.1.0"
     lucide-vue-next: "npm:^0.214.0"
     npm-run-all: "npm:^4.1.5"
+    nvm: "npm:^0.0.4"
     pinia: "npm:^2.0.32"
     postcss: "npm:^8.4.21"
     prettier: "npm:^2.8.4"

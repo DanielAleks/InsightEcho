@@ -109,7 +109,8 @@ export default defineComponent({
     function createNewPost() {
       try {
         axios({
-          url: "http://127.0.0.1:8000/graphql",
+          // url: process.env.APIURL_KEY,
+          url: "http://127.0.0.1:8001/graphql",
           method: "post",
           data: {
             query: `
@@ -138,7 +139,7 @@ export default defineComponent({
     onMounted(async () => {
       try {
         axios({
-          url: "http://127.0.0.1:8000/",
+          url: "http://127.0.0.1:8001/graphql",
           method: "post",
           data: {
             query: `
@@ -153,18 +154,19 @@ export default defineComponent({
           music
           }
         }
-        mutation createPost {
-  createPost (title: "New Post in Vue 3", avg_video_length: 3) {
-          title
-          setting
-          avg_video_length
-          hook
-          transitions
-          lighting
-          music
-          }
-        }
+  
       `,
+  //     mutation createPost {
+  // createPost (title: "New Post in Vue 3", avg_video_length: 3) {
+  //         title
+  //         setting
+  //         avg_video_length
+  //         hook
+  //         transitions
+  //         lighting
+  //         music
+  //         }
+  //       }
           },
         }).then((result) => {
           console.log(result.data, "AXIOS GQL DATA");
@@ -175,7 +177,7 @@ export default defineComponent({
       }
     });
 
-    const localAPI = "http://127.0.0.1:8000/graphql";
+    const localAPI = "http://127.0.0.1:8001/graphql";
 
     function closeModal() {
       state.showPopup = false;

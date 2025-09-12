@@ -72,7 +72,7 @@ export default defineComponent({
     function createNewPost() {
       try {
         axios({
-          url: "http://127.0.0.1:8000/graphql",
+          url: "http://127.0.0.1:8001/graphql",
           method: "post",
           data: {
             query: `
